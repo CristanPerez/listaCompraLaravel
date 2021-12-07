@@ -12,12 +12,12 @@
     </div>
     <div class="col-sm-8">
 
-        <h2>{{$producto[0]}}</h2>
-        <h4>{{$producto[1]}}</h4><br>
+        <h2>{{$producto->nombre}}</h2>
+        <h4>{{$producto->categoria}}</h4><br>
         <h6>Producto actualmente comprado</h6>
         <form>
         <input type="button" value="Pendiente de compra" style="background: red">
-        <a href={{url('/productos/edit/'.$id)}}>
+        <a href={{url('/productos/edit/'. $producto->id)}}>
         <input type="button" value="Editar" >
         <a href="{{url('/productos')}}">
         <input type="button" value="Inicio">
