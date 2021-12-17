@@ -17,18 +17,28 @@ use App\Http\Controllers\ProductoController;
 
 Route::get('/', [HomeController::class, 'getHome']);
 
-Route::get('productos', [ProductoController::class, 'getIndex']);
+Route::group(['prefix' => 'productos', 'middleware' => 'auth'], function () {
+    Route::get('/', [ProductoController::class, 'getIndex']);
 
-Route::get('productos/show/{id}', [ProductoController::class, 'getShow']);
+    Route::get('/show/{id}', [ProductoController::class, 'getShow']);
 
-Route::get('productos/create', [ProductoController::class, 'getCreate']);
+    Route::get('/create', [ProductoController::class, 'getCreate']);
 
-Route::get('productos/edit/{id}', [ProductoController::class, 'getEdit']);
+    Route::get('/edit/{id}', [ProductoController::class, 'getEdit']);
 
-Route::get('login', function(){
+    Route::put('/edit/{id}', [ProductoController::class, 'putEdit']);
+});
+
+
+
+/*Route::get('login', function(){
     return (view('auth.login'));
-});
+});*/
 
-Route::get('logout', function(){
+/*Route::get('logout', function(){
     return ('Has cerrado sesion');
-});
+});*/
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
