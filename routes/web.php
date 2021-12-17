@@ -25,6 +25,8 @@ Route::group(['prefix' => 'productos', 'middleware' => 'auth'], function () {
     Route::get('/create', [ProductoController::class, 'getCreate']);
 
     Route::get('/edit/{id}', [ProductoController::class, 'getEdit']);
+
+    Route::put('/edit/{id}', [ProductoController::class, 'putEdit']);
 });
 
 
